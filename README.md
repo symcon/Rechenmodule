@@ -1,6 +1,6 @@
-# SymconMisc
+# Rechenmodule
 
-Folgende Module beinhaltet das SymconMisc Repository:
+Folgende Module beinhaltet das Rechenmodule Repository:
 
 - __Rechen-Modul__ ([Dokumentation](Rechenmodul))  
 	Berechnung verschiedener Hilfswerte auf Basis einer Gruppe von Variablen, z.B. Summer oder Durchschnitt.
