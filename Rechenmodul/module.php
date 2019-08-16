@@ -67,17 +67,24 @@ class Rechenmodul extends IPSModule {
         foreach($variables as $variable) {
             $variableID = intval($variable->ID);
             if (IPS_GetObject($variableID)["ObjectType"] == 2) {
-                $eventID = IPS_CreateEvent(0);
-                IPS_SetParent($eventID, $this->InstanceID);
-                IPS_SetEventTrigger($eventID, 1, $variableID);
-                IPS_SetEventScript($eventID, "RM_Update(\$_IPS['TARGET']);");
-                IPS_SetEventActive($eventID, true);
+                $this->RegisterMessage($variableID, VM_UPDATE);
             }
         }
-        
+        //Delete all remaining events
+        foreach (IPS_GetChildrenIDs($this->InstanceID) as $childID) {
+            if (IPS_GetObject($childID)["ObjectType"] == 4) {
+                IPS_DeleteEvent($childID);
+            }
+        }
+
         $this->Update();
     }
     
+    public function MessageSink ($TimeStamp, $SenderID, $Message, $Data)
+    {
+        $this->Update();
+    }
+
     public function Update() {
         
         $sum = 0;
