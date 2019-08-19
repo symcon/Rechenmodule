@@ -20,11 +20,12 @@
 			//Never delete this line!
 			parent::ApplyChanges();
 
+			$eid = @$this->GetIDForIdent("SourceTrigger");
+			if($eid) {
+				IPS_DeleteEvent($eid);
+			}
+
 			if(IPS_VariableExists($this->ReadPropertyInteger("SourceVariable"))) {
-				$eid = @$this->GetIDForIdent("SourceTrigger");
-				if($eid) {
-					IPS_DeleteEvent($eid);
-				}
 				$this->RegisterMessage(($this->ReadPropertyInteger("SourceVariable")), VM_UPDATE);
 			}
 			

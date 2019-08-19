@@ -23,11 +23,13 @@ class UmrechnenMultiGrenzen extends IPSModule {
 		//Never delete this line!
 		parent::ApplyChanges();
 		
+		$eid = @IPS_GetObjectIDByIdent("SourceTrigger", $this->InstanceID);
+		if($eid) {
+			IPS_DeleteEvent($this->GetIDForIdent("SourceTrigger"));
+		}
+
 		if(IPS_VariableExists($this->ReadPropertyInteger("SourceVariable"))) {
-			$eid = @IPS_GetObjectIDByIdent("SourceTrigger", $this->InstanceID);
-			if($eid) {
-				IPS_DeleteEvent($this->GetIDForIdent("SourceTrigger"));
-			}
+			//Create our trigger
 			$this->RegisterMessage($this->ReadPropertyInteger("SourceVariable"), VM_UPDATE);
 		}
 		

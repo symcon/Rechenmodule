@@ -57,7 +57,10 @@ class Rechenmodul extends IPSModule {
         
         foreach ($childrenIDs as $id) {
             if (IPS_GetObject($id)["ObjectType"] == 4) {
-                IPS_DeleteEvent($id);
+                if (IPS_GetEvent($id)["EventScript"] == "RM_Update(\$_IPS['TARGET']);") {
+                     IPS_DeleteEvent($id);
+                }
+
             }
         }
         
