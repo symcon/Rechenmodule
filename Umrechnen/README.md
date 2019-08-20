@@ -36,7 +36,7 @@ Name               | Beschreibung
 Quelle             | Quellvariable, die Berechnung genutzt werden soll.
 Formel             | Formel, bei der Rechnung genutzt werden soll.
 Wert               | Testwert um die Formel zu Testen
-Button "Calculate" | Berechnet den Wert anhand des Test-"Wert"
+Berechne           | Berechnet den Wert anhand des Test-"Wert"
 
 
 ### 5. Statusvariablen und Profile
