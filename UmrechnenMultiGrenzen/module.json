@@ -10,5 +10,6 @@
 	"parentRequirements": [],
 	"childRequirements": [],
 	"implemented": [],
-	"prefix": "UMG"
+	"prefix": "UMG",
+	"url": "https://github.com/symcon/Rechenmodule/tree/master/UmrechnenMultiGrenzen"
 }
