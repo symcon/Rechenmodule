@@ -39,7 +39,7 @@ Quelle             | Quellvariable, die zur Berechnung genutzt werden soll.
 Formel 1-10        | Formel, die auf die Quellvariable angewendetet werden soll.
 Grenze 0-10        | Grenzwerte zwischen denen die eingerichtete Formel genutzt wird.
 Wert               | Testwert um die Formel zu Testen
-Button "Calculate" | Berechnet den Wert anhand des Test-"Wert"
+Berechne           | Berechnet den Wert anhand des Test-"Wert"
 
 Der Wert der Quellvariable kann innerhalb der Formel mit "$Value" implementiert werden.
 Beispiel:
