@@ -60,7 +60,7 @@ Die Statusvariablen werden automatisch angelegt. Das Löschen einzelner kann zu 
 
 ##### Statusvariablen
 
-Für jede Berechnung wird eine dazugehörige Statusvariable angelegt. Zusätzlich wird für jede ausgewählte Variable ein Ereignis erstellt, welches bei Änderung der Variablen die Berechnung erneut durchführt. 
+Für jede Berechnung wird eine dazugehörige Statusvariable angelegt.
 
 Name         | Typ        | Beschreibung
 ------------ | ---------- | ----------------
@@ -69,7 +69,6 @@ Minimum      | Variable   | Der minimale Wert der ausgewählten Variablen
 Maximum      | Variable   | Der maximale Wert der ausgewählten Variablen
 Durchschnitt | Variable   | Der Durchschnitt der ausgewählten Variablen
 Anzahl       | Variable   | Die Anzahl der ausgewählten Variablen
-Unbenannt    | Ereignisse | Ereignisse für jede Variable, welche bei Änderung der Variablen die Berechnung aktualisieren
 
 ##### Profile:
 
