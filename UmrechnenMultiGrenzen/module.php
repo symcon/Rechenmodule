@@ -23,18 +23,14 @@ class UmrechnenMultiGrenzen extends IPSModule {
 		//Never delete this line!
 		parent::ApplyChanges();
 		
-		//Create our trigger
+		$eid = @IPS_GetObjectIDByIdent("SourceTrigger", $this->InstanceID);
+		if($eid) {
+			IPS_DeleteEvent($this->GetIDForIdent("SourceTrigger"));
+		}
+
 		if(IPS_VariableExists($this->ReadPropertyInteger("SourceVariable"))) {
-			$eid = @IPS_GetObjectIDByIdent("SourceTrigger", $this->InstanceID);
-			if($eid === false) {
-				$eid = IPS_CreateEvent(0 /* Trigger */);
-				IPS_SetParent($eid, $this->InstanceID);
-				IPS_SetIdent($eid, "SourceTrigger");
-				IPS_SetName($eid, "Trigger for #".$this->ReadPropertyInteger("SourceVariable"));
-			}
-			IPS_SetEventTrigger($eid, 0, $this->ReadPropertyInteger("SourceVariable"));
-			IPS_SetEventScript($eid, "SetValue(IPS_GetObjectIDByIdent(\"Value\", \$_IPS['TARGET']), UMG_Calculate(\$_IPS['TARGET'], \$_IPS['VALUE']));");
-			IPS_SetEventActive($eid, true);
+			//Create our trigger
+			$this->RegisterMessage($this->ReadPropertyInteger("SourceVariable"), VM_UPDATE);
 		}
 		
 	}
@@ -58,13 +54,11 @@ class UmrechnenMultiGrenzen extends IPSModule {
 	
 	}
 
-	/**
-	* This function will be available automatically after the module is imported with the module control.
-	* Using the custom prefix this function will be callable from PHP and JSON-RPC through:
-	*
-	* UMG_Calculate($id);
-	*
-	*/
+	public function MessageSink ($TimeStamp, $SenderID, $Message, $Data)
+	{
+		SetValue($this->GetIDForIdent("Value"), $this->Calculate($Data[0]));
+	}
+
 	public function Calculate(float $Value) {
 		
 		for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
