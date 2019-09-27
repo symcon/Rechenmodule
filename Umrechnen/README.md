@@ -1,6 +1,6 @@
 # Umrechnen
 
-### Inhaltverzeichnis
+### Inhaltsverzeichnis
 
 1. [Funktionsumfang](#1-funktionsumfang)
 2. [Voraussetzungen](#2-voraussetzungen)
@@ -17,17 +17,17 @@
 
 ### 2. Voraussetzungen
 
-- IP-Symcon ab Version 4.x
+- IP-Symcon ab Version 4.3
 
 ### 3. Software-Installation
 
 * Über den Modul Store das Modul Rechenmodule installieren.
 * Alternativ über das Modul Control folgende URL hinzufügen:
-´https://github.com/symcon/Rechenmodule`    
+`https://github.com/symcon/Rechenmodule`    
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- Unter "Instanz hinzufügen" ist das 'Umrechnen'-Modul unter dem Hersteller '(Sonstige)' aufgeführt.  
+- Unter "Instanz hinzufügen" ist das 'Umrechnen'-Modul unter dem Hersteller '(Gerät)' aufgeführt.  
 
 __Konfigurationsseite__:
 

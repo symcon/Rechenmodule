@@ -1,7 +1,7 @@
 # Rechen-Modul
 Dieses Modul kann verschiedene Hilfsberechnungen auf einer Menge von Variablen durchführen, beispielsweise die Summe oder den Durchschnitt.
 
-### Inhaltverzeichnis
+### Inhaltsverzeichnis
 
 1. [Funktionsumfang](#1-funktionsumfang)
 2. [Voraussetzungen](#2-voraussetzungen)
@@ -30,11 +30,11 @@ Dieses Modul kann verschiedene Hilfsberechnungen auf einer Menge von Variablen d
 
 * Über den Modul Store das Modul Rechenmodule installieren.
 * Alternativ über das Modul Control folgende URL hinzufügen:
-´https://github.com/symcon/Rechenmodule`  
+`https://github.com/symcon/Rechenmodule`  
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- Unter "Instanz hinzufügen" ist das 'Rechen-Modul' unter dem Hersteller '(Sonstiges)' aufgeführt.  
+- Unter "Instanz hinzufügen" ist das 'Rechen-Modul' unter dem Hersteller '(Gerät)' aufgeführt.  
 
 __Konfigurationsseite__:
 
@@ -62,13 +62,13 @@ Die Statusvariablen werden automatisch angelegt. Das Löschen einzelner kann zu 
 
 Für jede Berechnung wird eine dazugehörige Statusvariable angelegt.
 
-Name         | Typ        | Beschreibung
------------- | ---------- | ----------------
-Summe        | Variable   | Die Summe aller ausgewählten Variablen
-Minimum      | Variable   | Der minimale Wert der ausgewählten Variablen
-Maximum      | Variable   | Der maximale Wert der ausgewählten Variablen
-Durchschnitt | Variable   | Der Durchschnitt der ausgewählten Variablen
-Anzahl       | Variable   | Die Anzahl der ausgewählten Variablen
+Name         | Typ   | Beschreibung
+------------ | ----- | ----------------
+Summe        | Float | Die Summe aller ausgewählten Variablen
+Minimum      | Float | Der minimale Wert der ausgewählten Variablen
+Maximum      | Float | Der maximale Wert der ausgewählten Variablen
+Durchschnitt | Float | Der Durchschnitt der ausgewählten Variablen
+Anzahl       | Float | Die Anzahl der ausgewählten Variablen
 
 ##### Profile:
 
