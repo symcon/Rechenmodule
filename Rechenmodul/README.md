@@ -28,8 +28,8 @@ Dieses Modul kann verschiedene Hilfsberechnungen auf einer Menge von Variablen d
 
 ### 3. Software-Installation
 
-* Über den Modul Store das Modul Rechenmodule installieren.
-* Alternativ über das Modul Control folgende URL hinzufügen:
+* Über den Module Store das Modul Rechenmodule installieren.
+* Alternativ über das Module Control folgende URL hinzufügen:
 `https://github.com/symcon/Rechenmodule`  
 
 ### 4. Einrichten der Instanzen in IP-Symcon
