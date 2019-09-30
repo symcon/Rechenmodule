@@ -17,7 +17,7 @@
 
 ### 2. Voraussetzungen
 
-- IP-Symcon ab Version 4.1
+- IP-Symcon ab Version 4.3
 
 ### 3. Software-Installation
 
