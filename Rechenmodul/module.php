@@ -82,6 +82,14 @@ class Rechenmodul extends IPSModule
             }
         }
 
+        //Add references
+        foreach ($this->GetReferenceList() as $reference) {
+            $this->UnregisterReference($reference);
+        }
+        foreach ($variables as $variable) {
+            $this->RegisterReference($variable->ID);
+        }
+
         $this->Update();
     }
 
