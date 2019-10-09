@@ -26,8 +26,10 @@ declare(strict_types=1);
                 IPS_DeleteEvent($eid);
             }
 
-            if (IPS_VariableExists($this->ReadPropertyInteger('SourceVariable'))) {
-                $this->RegisterMessage(($this->ReadPropertyInteger('SourceVariable')), VM_UPDATE);
+            $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
+            if (IPS_VariableExists($sourceVariable)) {
+                $this->RegisterMessage($sourceVariable, VM_UPDATE);
+                SetValue($this->GetIDForIdent('Value'), $this->Calculate(GetValue($sourceVariable)));
             }
         }
 
