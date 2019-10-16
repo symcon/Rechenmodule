@@ -59,7 +59,7 @@ Es werden keine zusätzlichen Profile hinzugefügt
 
 ### 7. PHP-Befehlsreferenz
 
-`float UMR_Calculate(integer $InstanzID, float $Wert);`  
-Berechnet die Rückgabe der Formel für den Wert $Wert und gibt diesen zurück.  
+`float UMR_Calculate(integer $InstanzID, float $Value);`  
+Berechnet die Rückgabe der Formel für den Wert $Value und gibt diesen zurück.  
 Beispiel:  
 `UMR_Calculate(12345);`
