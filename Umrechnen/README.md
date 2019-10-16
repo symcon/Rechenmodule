@@ -59,8 +59,7 @@ Es werden keine zusätzlichen Profile hinzugefügt
 
 ### 7. PHP-Befehlsreferenz
 
-`boolean UMR_Calculate(integer $InstanzID);`  
-Berechnet und setzt den Wert "Value" des Umrechnenmoduls mit der InstanzID $InstanzID anhand der Formel neu.  
-Die Funktion liefert keinerlei Rückgabewert.  
+`float UMR_Calculate(integer $InstanzID, float $Wert);`  
+Berechnet die Rückgabe der Formel für den Wert $Wert und gibt diesen zurück.  
 Beispiel:  
 `UMR_Calculate(12345);`
