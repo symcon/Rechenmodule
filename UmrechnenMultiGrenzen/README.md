@@ -65,8 +65,7 @@ Es werden keine zusätzlichen Profile hinzugefügt.
 
 ### 7. PHP-Befehlsreferenz
 
-`boolean UMG_Calculate(integer $InstanzID);`  
-Berechnet und setzt den Wert "Value" des UmrechnenMultiGrenzenmoduls mit der InstanzID $InstanzID anhand der Formel neu.  
-Die Funktion liefert keinerlei Rückgabewert.  
+`float UMG_Calculate(integer $InstanzID, float $Value);`  
+Berechnet die Rückgabe der Formel für den Wert $Value und gibt diesen zurück.  
 Beispiel:  
 `UMG_Calculate(12345);`
