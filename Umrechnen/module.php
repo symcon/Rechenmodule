@@ -29,6 +29,15 @@ declare(strict_types=1);
             if (IPS_VariableExists($this->ReadPropertyInteger('SourceVariable'))) {
                 $this->RegisterMessage(($this->ReadPropertyInteger('SourceVariable')), VM_UPDATE);
             }
+
+            //Add references
+            foreach ($this->GetReferenceList() as $reference) {
+                $this->UnregisterReference($reference);
+            }
+            $sourceID = $this->ReadPropertyInteger('SourceVariable');
+            if ($sourceID != 0) {
+                $this->RegisterReference($sourceID);
+            }
         }
 
         public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
