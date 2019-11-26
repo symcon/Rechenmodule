@@ -32,9 +32,11 @@ class UmrechnenMultiGrenzen extends IPSModule
             IPS_DeleteEvent($this->GetIDForIdent('SourceTrigger'));
         }
 
-        if (IPS_VariableExists($this->ReadPropertyInteger('SourceVariable'))) {
+        $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
+        if (IPS_VariableExists($sourceVariable)) {
             //Create our trigger
-            $this->RegisterMessage($this->ReadPropertyInteger('SourceVariable'), VM_UPDATE);
+            $this->RegisterMessage($sourceVariable, VM_UPDATE);
+            SetValue($this->GetIDForIdent('Value'), $this->Calculate(GetValue($sourceVariable)));
         }
 
         //Add references
