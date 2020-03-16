@@ -14,6 +14,7 @@ class UmrechnenMultiGrenzen extends IPSModule
         $this->RegisterPropertyInteger('SourceVariable', 0);
 
         $this->RegisterPropertyFloat('Border0', 0);
+        $this->RegisterPropertyString('CalculationData', '');
         $this->RegisterVariableFloat('Value', 'Value', '', 0);
         for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
             $this->RegisterPropertyString('Formula' . $i, '');
@@ -31,6 +32,10 @@ class UmrechnenMultiGrenzen extends IPSModule
         if ($eid) {
             IPS_DeleteEvent($this->GetIDForIdent('SourceTrigger'));
         }
+
+        //Transfer legacy Data
+        //$form = json_decode($this->GetConfigurationForm())
+        $this->SendDebug('Legacy', $this->GetConfigurationForm(), 0);
 
         $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
         if (IPS_VariableExists($sourceVariable)) {
@@ -70,6 +75,24 @@ class UmrechnenMultiGrenzen extends IPSModule
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
         SetValue($this->GetIDForIdent('Value'), $this->Calculate($Data[0]));
+    }
+
+    public function newerCalculate(float $Value)
+    {
+        $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
+        usort($calculationData, function ($a, $b)
+        {
+            return $a['Border'] <=> $b['Border'];
+        });
+        for($i = 0; $i < count($calculationData); $i++) {
+            if ($Value >= $calculationData[$i]['Border'] && $Value < $calculationData[$i + 1]['Border'] && $calculationData[$i]['Formula']) {
+                eval('$Value = ' . $calculationData[$i]['Formula'] . ';');
+                $this->SendDebug('Calc success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i-1]['Border'] . '| GrenzeOben: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
+                break;
+            }
+        }
+        return $Value;
+
     }
 
     public function Calculate(float $Value)

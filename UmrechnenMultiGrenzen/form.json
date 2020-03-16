@@ -1,0 +1,42 @@
+{
+    "elements":
+    [
+        {
+            "type": "List",
+            "name": "CalculationData",
+            "caption": "Formulas",
+            "add": true,
+            "delete": true,
+            "sort": {
+                "column": "Border",
+                "direction": "ascending"
+            },
+            "columns":
+            [
+                {
+                "caption": "Border",
+                "name": "Border",
+                "width": "500px",
+                "add": 0,
+                "edit": 
+                    {
+                        "type": "NumberSpinner",  "digits": 4
+                    }
+                },
+                {
+                    "caption": "Formula",
+                    "name": "Formula",
+                    "add": "",
+                    "edit": 
+                        {
+                            "type": "ValidationTextBox"
+                        }
+                    }
+            ]
+        }
+    ],
+    "actions": [
+        {"name": "Value", "type": "ValidationTextBox", "caption": "Value"},
+        {"type": "Button", "label": "Calculate", "onClick": "echo UMG_newCalculate($id, $Value);"}
+    ]
+}
