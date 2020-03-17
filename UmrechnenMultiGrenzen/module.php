@@ -80,46 +80,17 @@ class UmrechnenMultiGrenzen extends IPSModule
 
     public function GetConfigurationForm()
     {
-        $elements = [];
-        $elements[] = [
-            'type'    => 'List',
-            'name'    => 'CalculationData',
-            'caption' => 'Calculations',
-            'add'     => true,
-            'delete'  => true,
-            'sort'    => [
-                'column'    => 'Border',
-                'diraction' => 'ascending'
-            ],
-            'columns' => [
-                [
-                    'caption' => 'Border',
-                    'name'    => 'Border',
-                    'width'   => '500px',
-                    'add'     => 0,
-                    'edit'    => [
-                        'type'   => 'NumberSpinner',
-                        'digits' => 4
-                    ]
-                ],
-                [
-                    'caption'  => 'Formula',
-                    'name'     => 'Formula',
-                    'width'    => 'auto',
-                    'add'      => '',
-                    'edit'     => [
-                        'type' => 'ValidationTextBox'
-                    ]
-                ]
-
-            ]
-
-        ];
-        $actions = [];
-        $actions[] = ['name' => 'Value', 'type' => 'ValidationTextBox', 'caption' => 'Value'];
-        $actions[] = ['type' => 'Button', 'label' => 'Calculate', 'onClick' => 'echo UMG_Calculate($id, $Value);'];
-
-        return json_encode(['elements' => $elements]);
+        //Add options to form
+        $form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
+        $doubleBorder = $this->checkDoubleBorder();
+        if ($doubleBorder != []) {
+            $form['elements'][0]['caption'] = $this->Translate("The following borders occur more than once:\n") . implode(', ', $doubleBorder);
+            $form['elements'][0]['visible'] = true;
+        } else {
+            $form['elements'][0]['caption'] = '';
+            $form['elements'][0]['visible'] = false;    
+        }
+        return json_encode($form);
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
@@ -139,10 +110,28 @@ class UmrechnenMultiGrenzen extends IPSModule
                 (!isset($calculationData[$i + 1]['Border']) || ($Value < $calculationData[$i + 1]['Border'])) &&
                 ($calculationData[$i]['Formula'] != '')) {
                 eval('$Value = ' . $calculationData[$i]['Formula'] . ';');
-                $this->SendDebug('Calculation success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i - 1]['Border'] . '| GrenzeOben: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
+                $this->SendDebug('Calculation success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
                 break;
             }
         }
         return $Value;
+    }
+
+    private function checkDoubleBorder()
+    {
+        $return = [];
+        $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
+        usort($calculationData, function ($a, $b)
+        {
+            return $a['Border'] <=> $b['Border'];
+        });
+        for ($i = 0; $i < count($calculationData) - 1; $i++) {
+            if ((isset($calculationData[$i + 1]['Border']) == true) && ($calculationData[$i]['Border'] == $calculationData[$i + 1]['Border'])) {
+                $return[] = $calculationData[$i]['Border'];
+                $this->SendDebug('Double', 'Border', 0);
+            }
+        }
+
+        return $return;
     }
 }
