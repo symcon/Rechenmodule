@@ -3,7 +3,10 @@
 		"de": { 
 			"Source": "Quelle",
 			"Value": "Wert",
-			"Calculate": "Berechne"
+			"Calculate": "Berechne",
+			"Border": "Grenze",
+			"Formula": "Formel",
+			"Calculations": "Berechnungen"
 		}
 	}
 }
