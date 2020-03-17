@@ -54,53 +54,22 @@ class UmrechnenMultiGrenzen extends IPSModule
         }
     }
 
-    public function GetConfigurationForm()
-    {
-        $arrayElements = [];
-        $arrayElements[] = ['name' => 'SourceVariable', 'type' => 'SelectVariable', 'caption' => 'Source'];
-        $arrayElements[] = ['name' => 'Border0', 'type' => 'NumberSpinner', 'caption' => 'Border 0', 'digits' => 4];
-
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
-            $arrayElements[] = ['name' => 'Formula' . $i, 'type' => 'ValidationTextBox', 'caption' => 'Formula ' . $i];
-            $arrayElements[] = ['name' => 'Border' . $i, 'type' => 'NumberSpinner', 'caption' => 'Border ' . $i, 'digits' => 4];
-        }
-
-        $arrayActions = [];
-        $arrayActions[] = ['name' => 'Value', 'type' => 'ValidationTextBox', 'caption' => 'Value'];
-        $arrayActions[] = ['type' => 'Button', 'label' => 'Calculate', 'onClick' => 'echo UMG_Calculate($id, $Value);'];
-
-        return json_encode(['elements' => $arrayElements, 'actions' => $arrayActions]);
-    }
-
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
         SetValue($this->GetIDForIdent('Value'), $this->Calculate($Data[0]));
     }
 
-    public function newerCalculate(float $Value)
+    public function Calculate(float $Value)
     {
         $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
         usort($calculationData, function ($a, $b)
         {
             return $a['Border'] <=> $b['Border'];
         });
-        for($i = 0; $i < count($calculationData); $i++) {
+        for ($i = 0; $i < count($calculationData); $i++) {
             if ($Value >= $calculationData[$i]['Border'] && $Value < $calculationData[$i + 1]['Border'] && $calculationData[$i]['Formula']) {
                 eval('$Value = ' . $calculationData[$i]['Formula'] . ';');
-                $this->SendDebug('Calc success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i-1]['Border'] . '| GrenzeOben: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
-                break;
-            }
-        }
-        return $Value;
-
-    }
-
-    public function Calculate(float $Value)
-    {
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
-            if ($Value >= $this->ReadPropertyFloat('Border' . ($i - 1)) && $Value < $this->ReadPropertyFloat('Border' . $i) && $this->ReadPropertyString('Formula' . $i) != '') {
-                eval('$Value = ' . $this->ReadPropertyString('Formula' . $i) . ';');
-                $this->SendDebug('Calc success', 'Value: ' . $Value . ' GrenzeUnten: ' . $this->ReadPropertyFloat('Border' . ($i - 1)) . ' GrenzeOben ' . $this->ReadPropertyFloat('Border' . $i) . ' Iteration ' . $i . ' Formel: ' . $this->ReadPropertyString('Formula' . $i), 0);
+                $this->SendDebug('Calc success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i - 1]['Border'] . '| GrenzeOben: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
                 break;
             }
         }
