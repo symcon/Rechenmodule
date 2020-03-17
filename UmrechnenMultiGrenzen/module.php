@@ -60,6 +60,7 @@ class UmrechnenMultiGrenzen extends IPSModule
             IPS_ApplyChanges($this->InstanceID);
             return;
         }
+
         $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
         if (IPS_VariableExists($sourceVariable)) {
             //Create our trigger
@@ -75,6 +76,50 @@ class UmrechnenMultiGrenzen extends IPSModule
         if ($sourceID != 0) {
             $this->RegisterReference($sourceID);
         }
+    }
+
+    public function GetConfigurationForm()
+    {
+        $elements = [];
+        $elements[] = [
+            'type'    => 'List',
+            'name'    => 'CalculationData',
+            'caption' => 'Calculations',
+            'add'     => true,
+            'delete'  => true,
+            'sort'    => [
+                'column'    => 'Border',
+                'diraction' => 'ascending'
+            ],
+            'columns' => [
+                [
+                    'caption' => 'Border',
+                    'name'    => 'Border',
+                    'width'   => '500px',
+                    'add'     => 0,
+                    'edit'    => [
+                        'type'   => 'NumberSpinner',
+                        'digits' => 4
+                    ]
+                ],
+                [
+                    'caption'  => 'Formula',
+                    'name'     => 'Formula',
+                    'width'    => 'auto',
+                    'add'      => '',
+                    'edit'     => [
+                        'type' => 'ValidationTextBox'
+                    ]
+                ]
+
+            ]
+
+        ];
+        $actions = [];
+        $actions[] = ['name' => 'Value', 'type' => 'ValidationTextBox', 'caption' => 'Value'];
+        $actions[] = ['type' => 'Button', 'label' => 'Calculate', 'onClick' => 'echo UMG_Calculate($id, $Value);'];
+
+        return json_encode(['elements' => $elements]);
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
