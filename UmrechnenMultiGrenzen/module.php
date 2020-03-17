@@ -90,9 +90,11 @@ class UmrechnenMultiGrenzen extends IPSModule
             return $a['Border'] <=> $b['Border'];
         });
         for ($i = 0; $i < count($calculationData); $i++) {
-            if ($Value >= $calculationData[$i]['Border'] && $Value < $calculationData[$i + 1]['Border'] && $calculationData[$i]['Formula']) {
+            if (($Value >= $calculationData[$i]['Border']) &&
+                (!isset($calculationData[$i + 1]['Border']) || ($Value < $calculationData[$i + 1]['Border'])) &&
+                ($calculationData[$i]['Formula'] != '')) {
                 eval('$Value = ' . $calculationData[$i]['Formula'] . ';');
-                $this->SendDebug('Calc success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i - 1]['Border'] . '| GrenzeOben: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
+                $this->SendDebug('Calculation success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i - 1]['Border'] . '| GrenzeOben: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
                 break;
             }
         }
