@@ -15,7 +15,7 @@ class UmrechnenMultiGrenzen extends IPSModule
 
         $this->RegisterPropertyFloat('Border0', 0);
         $this->RegisterVariableFloat('Value', 'Value', '', 0);
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
+        for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
             $this->RegisterPropertyString('Formula' . $i, '');
             $this->RegisterPropertyFloat('Border' . $i, 0.0000);
         }
@@ -88,7 +88,7 @@ class UmrechnenMultiGrenzen extends IPSModule
             $form['elements'][0]['visible'] = true;
         } else {
             $form['elements'][0]['caption'] = '';
-            $form['elements'][0]['visible'] = false;    
+            $form['elements'][0]['visible'] = false;
         }
         return json_encode($form);
     }

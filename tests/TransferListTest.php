@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class TransferListTest extends TestCase
 {
-
     protected function setUp(): void
     {
         //Reset
@@ -36,17 +35,17 @@ class TransferListTest extends TestCase
         echo "\nStartConfiguration" . print_r(IPS_GetProperty($instanceID, 'CalculationData'), true) . "\n";
         IPS_SetConfiguration($instanceID, json_encode(
             [
-                'Border0' => 0,
+                'Border0'  => 0,
                 'Formula1' => '$Value * 2',
-                'Border1' => 5,
+                'Border1'  => 5,
                 'Formula2' => '$Value * 5',
-                'Border4' => 0,
+                'Border4'  => 0,
                 'Formula5' => ''
             ]
         ));
         IPS_ApplyChanges($instanceID);
         echo 'EndConfiguration' . print_r(IPS_GetProperty($instanceID, 'CalculationData'), true) . "\n";
-        
+
         //Check Properties
         $this->assertEquals('[{"Border":0,"Formula":"$Value * 2"},{"Border":5,"Formula":"$Value * 5"}]', IPS_GetProperty($instanceID, 'CalculationData'));
         $this->assertEquals('', IPS_GetProperty($instanceID, 'Formula1'));

@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class FunctionalityTest extends TestCase
 {
-
     protected function setUp(): void
     {
         //Reset
@@ -36,15 +35,15 @@ class FunctionalityTest extends TestCase
         IPS_SetProperty($instanceID, 'CalculationData', json_encode(
             [
                 [
-                    'Border' => 1,
+                    'Border'  => 1,
                     'Formula' => '1'
                 ],
                 [
-                    'Border' => 5,
+                    'Border'  => 5,
                     'Formula' => '5'
                 ],
                 [
-                    'Border' => 8,
+                    'Border'  => 8,
                     'Formula' => '8'
                 ]
             ]
@@ -67,15 +66,15 @@ class FunctionalityTest extends TestCase
         IPS_SetProperty($instanceID, 'CalculationData', json_encode(
             [
                 [
-                    'Border' => 1,
+                    'Border'  => 1,
                     'Formula' => '1'
                 ],
                 [
-                    'Border' => 5,
+                    'Border'  => 5,
                     'Formula' => '42'
                 ],
                 [
-                    'Border' => 5,
+                    'Border'  => 5,
                     'Formula' => '69'
                 ]
             ]
