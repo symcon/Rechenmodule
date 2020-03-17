@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 class UmrechnenMultiGrenzen extends IPSModule
 {
-    const BORDERCOUNT = 10;
+    const LEGACYBORDERCOUNT = 10;
 
     public function Create()
     {
@@ -35,7 +35,7 @@ class UmrechnenMultiGrenzen extends IPSModule
 
         //Check whether to transfer legacy data
         $transferLegacy = false;
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
+        for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
             if ($this->ReadPropertyString('Formula' . $i) != '') {
                 $transferLegacy = true;
                 break;
@@ -45,7 +45,7 @@ class UmrechnenMultiGrenzen extends IPSModule
         //Transfer legacy data
         if ($transferLegacy == true) {
             $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
-            for ($i = 1; $i <= 10; $i++) {
+            for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
                 if ($this->ReadPropertyFloat('Border' . ($i - 1)) == 0 && $this->ReadPropertyString('Formula' . $i) == '') {
                     continue;
                 }
