@@ -4,7 +4,7 @@
         {
             "type": "List",
             "name": "CalculationData",
-            "caption": "Formulas",
+            "caption": "Calculations",
             "add": true,
             "delete": true,
             "sort": {
@@ -26,6 +26,7 @@
                 {
                     "caption": "Formula",
                     "name": "Formula",
+                    "width": "auto",
                     "add": "",
                     "edit": 
                         {
@@ -37,6 +38,6 @@
     ],
     "actions": [
         {"name": "Value", "type": "ValidationTextBox", "caption": "Value"},
-        {"type": "Button", "label": "Calculate", "onClick": "echo UMG_newCalculate($id, $Value);"}
+        {"type": "Button", "label": "Calculate", "onClick": "echo UMG_Calculate($id, $Value);"}
     ]
 }
