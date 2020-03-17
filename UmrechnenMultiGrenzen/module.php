@@ -14,12 +14,12 @@ class UmrechnenMultiGrenzen extends IPSModule
         $this->RegisterPropertyInteger('SourceVariable', 0);
 
         $this->RegisterPropertyFloat('Border0', 0);
-        $this->RegisterPropertyString('CalculationData', '');
         $this->RegisterVariableFloat('Value', 'Value', '', 0);
         for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
             $this->RegisterPropertyString('Formula' . $i, '');
             $this->RegisterPropertyFloat('Border' . $i, 0.0000);
         }
+        $this->RegisterPropertyString('CalculationData', '');
     }
 
     public function ApplyChanges()
@@ -33,10 +33,33 @@ class UmrechnenMultiGrenzen extends IPSModule
             IPS_DeleteEvent($this->GetIDForIdent('SourceTrigger'));
         }
 
-        //Transfer legacy Data
-        //$form = json_decode($this->GetConfigurationForm())
-        $this->SendDebug('Legacy', $this->GetConfigurationForm(), 0);
+        //Check whether to transfer legacy data
+        $transferLegacy = false;
+        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
+            if ($this->ReadPropertyString('Formula' . $i) != '') {
+                $transferLegacy = true;
+                break;
+            }
+        }
 
+        //Transfer legacy data
+        if ($transferLegacy == true) {
+            $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
+            for ($i = 1; $i <= 10; $i++) {
+                if ($this->ReadPropertyFloat('Border' . ($i - 1)) == 0 && $this->ReadPropertyString('Formula' . $i) == '') {
+                    continue;
+                }
+                $calculationData[] = [
+                    'Border'  => $this->ReadPropertyFloat('Border' . ($i - 1)),
+                    'Formula' => $this->ReadPropertyString('Formula' . $i)
+                ];
+                IPS_SetProperty($this->InstanceID, 'Border' . ($i - 1), 0);
+                IPS_SetProperty($this->InstanceID, 'Formula' . $i, '');
+            }
+            IPS_SetProperty($this->InstanceID, 'CalculationData', json_encode($calculationData));
+            IPS_ApplyChanges($this->InstanceID);
+            return;
+        }
         $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
         if (IPS_VariableExists($sourceVariable)) {
             //Create our trigger
