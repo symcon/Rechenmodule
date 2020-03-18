@@ -15,7 +15,7 @@
 				"direction": "ascending"
 			},
 			"columns": [{
-					"caption": "Border",
+					"caption": "From",
 					"name": "Border",
 					"width": "500px",
 					"add": 0,
