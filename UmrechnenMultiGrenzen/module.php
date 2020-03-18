@@ -116,17 +116,18 @@ class UmrechnenMultiGrenzen extends IPSModule
 
     private function checkDoubleBorder()
     {
-        $return = [];
+        $result = [];
         $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
         usort($calculationData, function ($a, $b)
         {
             return $a['Border'] <=> $b['Border'];
         });
         for ($i = 0; $i < count($calculationData) - 1; $i++) {
-                $return[] = $calculationData[$i]['Border'];
+            if (($calculationData[$i]['Border'] == $calculationData[$i + 1]['Border'])) {
+                $result[] = $calculationData[$i]['Border'];
             }
         }
 
-        return $return;
+        return $result;
     }
 }
