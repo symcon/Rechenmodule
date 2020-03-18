@@ -29,7 +29,6 @@ class FunctionalityTest extends TestCase
 
         //Instances
         $instanceID = IPS_CreateInstance('{D40D120A-C525-4DFC-9F44-ED6E43890C63}');
-        //Setting custom time for testing
 
         //Configuration
         IPS_SetProperty($instanceID, 'CalculationData', json_encode(
@@ -49,7 +48,6 @@ class FunctionalityTest extends TestCase
             ]
         ));
         IPS_ApplyChanges($instanceID);
-        IPS_EnableDebug($instanceID, 10);
         $result = UMG_Calculate($instanceID, 6);
         //Check result
         $this->assertEquals(5, $result);
