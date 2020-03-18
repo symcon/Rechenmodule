@@ -110,7 +110,7 @@ class UmrechnenMultiGrenzen extends IPSModule
                 (!isset($calculationData[$i + 1]['Border']) || ($Value < $calculationData[$i + 1]['Border'])) &&
                 ($calculationData[$i]['Formula'] != '')) {
                 eval('$Value = ' . $calculationData[$i]['Formula'] . ';');
-                $this->SendDebug('Calculation success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i]['Border'] . ' Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
+                $this->SendDebug('Calculation success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i]['Border'] . '| Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
                 break;
             }
         }
