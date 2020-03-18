@@ -27,12 +27,10 @@ class TransferListTest extends TestCase
     public function testPropertyTransfer()
     {
 
-        //Instances
+        //Instance
         $instanceID = IPS_CreateInstance('{D40D120A-C525-4DFC-9F44-ED6E43890C63}');
-        //Setting custom time for testing
 
         //Configuration
-        echo "\nStartConfiguration" . print_r(IPS_GetProperty($instanceID, 'CalculationData'), true) . "\n";
         IPS_SetConfiguration($instanceID, json_encode(
             [
                 'Border0'  => 0,
@@ -44,11 +42,28 @@ class TransferListTest extends TestCase
             ]
         ));
         IPS_ApplyChanges($instanceID);
-        echo 'EndConfiguration' . print_r(IPS_GetProperty($instanceID, 'CalculationData'), true) . "\n";
 
         //Check Properties
         $this->assertEquals('[{"Border":0,"Formula":"$Value * 2"},{"Border":5,"Formula":"$Value * 5"}]', IPS_GetProperty($instanceID, 'CalculationData'));
         $this->assertEquals('', IPS_GetProperty($instanceID, 'Formula1'));
         $this->assertEquals(0, IPS_GetProperty($instanceID, 'Border1'));
+    }
+
+    public function testEmptyPropertyTransfer()
+    {
+
+        //Instance
+        $instanceID = IPS_CreateInstance('{D40D120A-C525-4DFC-9F44-ED6E43890C63}');
+        //Setting custom time for testing
+
+        //Configuration
+        IPS_SetConfiguration($instanceID, json_encode([]));
+        IPS_ApplyChanges($instanceID);
+
+        //Check Properties
+        $this->assertEquals('', IPS_GetProperty($instanceID, 'CalculationData'));
+        $this->assertEquals('', IPS_GetProperty($instanceID, 'Formula1'));
+        $this->assertEquals(0, IPS_GetProperty($instanceID, 'Border1'));
+        $this->assertTrue(true);
     }
 }
