@@ -60,31 +60,56 @@ class FunctionalityTest extends TestCase
 
         //Instances
         $instanceID = IPS_CreateInstance('{D40D120A-C525-4DFC-9F44-ED6E43890C63}');
-        //Setting custom time for testing
 
         //Configuration
         IPS_SetProperty($instanceID, 'CalculationData', json_encode(
             [
                 [
                     'Border'  => 1,
-                    'Formula' => '1'
+                    'Formula' => '10'
                 ],
                 [
                     'Border'  => 5,
-                    'Formula' => '42'
+                    'Formula' => '$Value * 2'
                 ],
                 [
                     'Border'  => 5,
-                    'Formula' => '69'
+                    'Formula' => '$Value * 3'
+                ],
+                [
+                    'Border'  => 7,
+                    'Formula' => '10'
                 ]
             ]
         ));
         IPS_ApplyChanges($instanceID);
-        IPS_EnableDebug($instanceID, 10);
-        $result = UMG_Calculate($instanceID, 10);
-        echo $result;
+        $result = UMG_Calculate($instanceID, 6);
+
         //Check result
-        //$this->assertEquals(5, $result);
+        $this->assertEquals(18, $result);
+        $this->assertTrue(true);
+    }
+
+    public function testOneElement()
+    {
+
+        //Instances
+        $instanceID = IPS_CreateInstance('{D40D120A-C525-4DFC-9F44-ED6E43890C63}');
+
+        //Configuration
+        IPS_SetProperty($instanceID, 'CalculationData', json_encode(
+            [
+                [
+                    'Border'  => 10,
+                    'Formula' => '$Value * 2'
+                ]
+            ]
+        ));
+        IPS_ApplyChanges($instanceID);
+        $result = UMG_Calculate($instanceID, 10);
+
+        //Check result
+        $this->assertEquals(20, $result);
         $this->assertTrue(true);
     }
 }
