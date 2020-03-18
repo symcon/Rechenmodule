@@ -86,9 +86,6 @@ class UmrechnenMultiGrenzen extends IPSModule
         if ($doubleBorder != []) {
             $form['elements'][0]['caption'] = $this->Translate("The following borders occur more than once:\n") . implode(', ', $doubleBorder);
             $form['elements'][0]['visible'] = true;
-        } else {
-            $form['elements'][0]['caption'] = '';
-            $form['elements'][0]['visible'] = false;
         }
         return json_encode($form);
     }
@@ -126,9 +123,7 @@ class UmrechnenMultiGrenzen extends IPSModule
             return $a['Border'] <=> $b['Border'];
         });
         for ($i = 0; $i < count($calculationData) - 1; $i++) {
-            if ((isset($calculationData[$i + 1]['Border']) == true) && ($calculationData[$i]['Border'] == $calculationData[$i + 1]['Border'])) {
                 $return[] = $calculationData[$i]['Border'];
-                $this->SendDebug('Double', 'Border', 0);
             }
         }
 
