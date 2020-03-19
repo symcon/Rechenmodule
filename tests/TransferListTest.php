@@ -61,7 +61,7 @@ class TransferListTest extends TestCase
         IPS_ApplyChanges($instanceID);
 
         //Check Properties
-        $this->assertEquals('', IPS_GetProperty($instanceID, 'CalculationData'));
+        $this->assertEquals('[]', IPS_GetProperty($instanceID, 'CalculationData'));
         $this->assertEquals('', IPS_GetProperty($instanceID, 'Formula1'));
         $this->assertEquals(0, IPS_GetProperty($instanceID, 'Border1'));
         $this->assertTrue(true);
