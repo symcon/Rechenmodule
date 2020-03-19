@@ -19,7 +19,7 @@ class UmrechnenMultiGrenzen extends IPSModule
             $this->RegisterPropertyString('Formula' . $i, '');
             $this->RegisterPropertyFloat('Border' . $i, 0.0000);
         }
-        $this->RegisterPropertyString('CalculationData', '');
+        $this->RegisterPropertyString('CalculationData', '[]');
     }
 
     public function ApplyChanges()
