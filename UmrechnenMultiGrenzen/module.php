@@ -43,7 +43,7 @@ class UmrechnenMultiGrenzen extends IPSModule
         }
 
         //Transfer legacy data
-        if ($transferLegacy == true) {
+        if ($transferLegacy) {
             $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
             for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
                 if ($this->ReadPropertyFloat('Border' . ($i - 1)) == 0 && $this->ReadPropertyString('Formula' . $i) == '') {
