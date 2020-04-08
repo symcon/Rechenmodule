@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 class UmrechnenMultiGrenzen extends IPSModule
 {
-    const BORDERCOUNT = 10;
+    const LEGACYBORDERCOUNT = 10;
 
     public function Create()
     {
@@ -15,10 +15,11 @@ class UmrechnenMultiGrenzen extends IPSModule
 
         $this->RegisterPropertyFloat('Border0', 0);
         $this->RegisterVariableFloat('Value', 'Value', '', 0);
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
+        for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
             $this->RegisterPropertyString('Formula' . $i, '');
             $this->RegisterPropertyFloat('Border' . $i, 0.0000);
         }
+        $this->RegisterPropertyString('CalculationData', '[]');
     }
 
     public function ApplyChanges()
@@ -30,6 +31,34 @@ class UmrechnenMultiGrenzen extends IPSModule
         $eid = @IPS_GetObjectIDByIdent('SourceTrigger', $this->InstanceID);
         if ($eid) {
             IPS_DeleteEvent($this->GetIDForIdent('SourceTrigger'));
+        }
+
+        //Check whether to transfer legacy data
+        $transferLegacy = false;
+        for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
+            if ($this->ReadPropertyString('Formula' . $i) != '') {
+                $transferLegacy = true;
+                break;
+            }
+        }
+
+        //Transfer legacy data
+        if ($transferLegacy) {
+            $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
+            for ($i = 1; $i <= self::LEGACYBORDERCOUNT; $i++) {
+                if ($this->ReadPropertyFloat('Border' . ($i - 1)) == 0 && $this->ReadPropertyString('Formula' . $i) == '') {
+                    continue;
+                }
+                $calculationData[] = [
+                    'Border'  => $this->ReadPropertyFloat('Border' . ($i - 1)),
+                    'Formula' => $this->ReadPropertyString('Formula' . $i)
+                ];
+                IPS_SetProperty($this->InstanceID, 'Border' . ($i - 1), 0);
+                IPS_SetProperty($this->InstanceID, 'Formula' . $i, '');
+            }
+            IPS_SetProperty($this->InstanceID, 'CalculationData', json_encode($calculationData));
+            IPS_ApplyChanges($this->InstanceID);
+            return;
         }
 
         $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
@@ -51,20 +80,14 @@ class UmrechnenMultiGrenzen extends IPSModule
 
     public function GetConfigurationForm()
     {
-        $arrayElements = [];
-        $arrayElements[] = ['name' => 'SourceVariable', 'type' => 'SelectVariable', 'caption' => 'Source'];
-        $arrayElements[] = ['name' => 'Border0', 'type' => 'NumberSpinner', 'caption' => 'Border 0', 'digits' => 4];
-
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
-            $arrayElements[] = ['name' => 'Formula' . $i, 'type' => 'ValidationTextBox', 'caption' => 'Formula ' . $i];
-            $arrayElements[] = ['name' => 'Border' . $i, 'type' => 'NumberSpinner', 'caption' => 'Border ' . $i, 'digits' => 4];
+        //Add options to form
+        $form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
+        $doubleBorder = $this->checkDoubleBorder();
+        if ($doubleBorder != []) {
+            $form['elements'][0]['caption'] = $this->Translate("The following borders occur more than once:\n") . implode(', ', $doubleBorder);
+            $form['elements'][0]['visible'] = true;
         }
-
-        $arrayActions = [];
-        $arrayActions[] = ['name' => 'Value', 'type' => 'ValidationTextBox', 'caption' => 'Value'];
-        $arrayActions[] = ['type' => 'Button', 'label' => 'Calculate', 'onClick' => 'echo UMG_Calculate($id, $Value);'];
-
-        return json_encode(['elements' => $arrayElements, 'actions' => $arrayActions]);
+        return json_encode($form);
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
@@ -74,13 +97,37 @@ class UmrechnenMultiGrenzen extends IPSModule
 
     public function Calculate(float $Value)
     {
-        for ($i = 1; $i <= self::BORDERCOUNT; $i++) {
-            if ($Value >= $this->ReadPropertyFloat('Border' . ($i - 1)) && $Value < $this->ReadPropertyFloat('Border' . $i) && $this->ReadPropertyString('Formula' . $i) != '') {
-                eval('$Value = ' . $this->ReadPropertyString('Formula' . $i) . ';');
-                $this->SendDebug('Calc success', 'Value: ' . $Value . ' GrenzeUnten: ' . $this->ReadPropertyFloat('Border' . ($i - 1)) . ' GrenzeOben ' . $this->ReadPropertyFloat('Border' . $i) . ' Iteration ' . $i . ' Formel: ' . $this->ReadPropertyString('Formula' . $i), 0);
+        $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
+        usort($calculationData, function ($a, $b)
+        {
+            return $a['Border'] <=> $b['Border'];
+        });
+        for ($i = 0; $i < count($calculationData); $i++) {
+            if (($Value >= $calculationData[$i]['Border']) &&
+                (!isset($calculationData[$i + 1]['Border']) || ($Value < $calculationData[$i + 1]['Border'])) &&
+                ($calculationData[$i]['Formula'] != '')) {
+                eval('$Value = ' . $calculationData[$i]['Formula'] . ';');
+                $this->SendDebug('Calculation success', 'Value: ' . $Value . '| GrenzeUnten: ' . $calculationData[$i]['Border'] . '| Iteration ' . $i . '| Formel: ' . $calculationData[$i]['Formula'], 0);
                 break;
             }
         }
         return $Value;
+    }
+
+    private function checkDoubleBorder()
+    {
+        $result = [];
+        $calculationData = json_decode($this->ReadPropertyString('CalculationData'), true);
+        usort($calculationData, function ($a, $b)
+        {
+            return $a['Border'] <=> $b['Border'];
+        });
+        for ($i = 0; $i < count($calculationData) - 1; $i++) {
+            if (($calculationData[$i]['Border'] == $calculationData[$i + 1]['Border'])) {
+                $result[] = $calculationData[$i]['Border'];
+            }
+        }
+
+        return $result;
     }
 }
