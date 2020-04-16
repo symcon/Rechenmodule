@@ -34,7 +34,7 @@ Dieses Modul kann verschiedene Hilfsberechnungen auf einer Menge von Variablen d
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- Unter "Instanz hinzufügen" ist das 'Rechen-Modul' unter dem Hersteller '(Gerät)' aufgeführt.  
+- Unter "Instanz hinzufügen" kann das 'Rechen-Modul' mithilfe der Schnellsuche gefunden werden.  
 
 __Konfigurationsseite__:
 
