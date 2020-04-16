@@ -29,7 +29,7 @@
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- Unter "Instanz hinzufügen" ist das 'UmrechnenMultiGrenzen'-Modul unter dem Hersteller '(Gerät)' aufgeführt.  
+- Unter "Instanz hinzufügen" kann das 'UmrechnenMultiGrenzen'-Modul mithilfe der Schnellsuche gefunden werden.  
 
 __Konfigurationsseite__:
 
