@@ -38,7 +38,7 @@
 	],
 	"actions": [{
 			"name": "Value",
-			"type": "ValidationTextBox",
+			"type": "NumberSpinner",
 			"caption": "Value"
 		},
 		{
