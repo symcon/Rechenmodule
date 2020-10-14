@@ -39,7 +39,8 @@
 	"actions": [{
 			"name": "Value",
 			"type": "NumberSpinner",
-			"caption": "Value"
+			"caption": "Value",
+			"digits": 2
 		},
 		{
 			"type": "Button",
