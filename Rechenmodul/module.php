@@ -66,9 +66,15 @@ class Rechenmodul extends IPSModule
             }
         }
 
+        //Delete all registrations in order to readd them
+        foreach ($this->GetMessageList() as $senderID => $messages) {
+            foreach ($messages as $message) {
+                $this->UnregisterMessage($senderID, $message);
+            }
+        }
+
         // Create new elements for all variables
         $variables = json_decode($this->ReadPropertyString('Variables'));
-
         foreach ($variables as $variable) {
             $variableID = intval($variable->ID);
             if (IPS_GetObject($variableID)['ObjectType'] == 2) {
