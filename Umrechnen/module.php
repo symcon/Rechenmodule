@@ -26,6 +26,13 @@ declare(strict_types=1);
                 IPS_DeleteEvent($eid);
             }
 
+            //Delete all registrations in order to readd them
+            foreach ($this->GetMessageList() as $senderID => $messages) {
+                foreach ($messages as $message) {
+                    $this->UnregisterMessage($senderID, $message);
+                }
+            }
+
             $sourceVariable = $this->ReadPropertyInteger('SourceVariable');
             if (IPS_VariableExists($sourceVariable)) {
                 $this->RegisterMessage($sourceVariable, VM_UPDATE);
