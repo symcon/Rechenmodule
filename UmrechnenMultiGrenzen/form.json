@@ -5,6 +5,11 @@
 			"visible": false
 		},
 		{
+			"name": "SourceVariable",
+			"type": "SelectVariable",
+			"caption": "Source"
+		},
+		{
 			"type": "List",
 			"name": "CalculationData",
 			"caption": "Calculations",
