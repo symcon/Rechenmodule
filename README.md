@@ -6,11 +6,11 @@
 
 Folgende Module beinhaltet das Rechenmodule Repository:
 
-- __Rechen-Modul__ ([Dokumentation](Rechenmodul))  
+- __Rechen-Modul__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/rechenmodule/rechen-modul))  
 	Berechnung verschiedener Hilfswerte auf Basis einer Gruppe von Variablen, z.B. Summer oder Durchschnitt.
 
-- __Umrechnen__ ([Dokumentation](Umrechnen))  
+- __Umrechnen__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/rechenmodule/umrechnen))  
 	Rechnet eine Variable über eine selbstdefinierte Formel um.
 
-- __UmrechnenMultiGrenzen__ ([Dokumentation](UmrechnenMultiGrenzen))  
+- __UmrechnenMultiGrenzen__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/rechenmodule/umrechnenmultigrenzen))  
 	Rechnet eine Variable in eingerichteten Grenzen über eine selbstdefinierte Formel um.
