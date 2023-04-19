@@ -1,4 +1,8 @@
 # Rechenmodule
+[![IP-Symcon is awesome!](https://img.shields.io/badge/IP--Symcon-4.3-blue.svg)](https://www.symcon.de)
+[![Check Style](https://github.com/symcon/Aktivliste/workflows/Check%20Style/badge.svg)](https://github.com/symcon/rechenmodule/actions)
+[![Run Tests](https://github.com/symcon/Aktivliste/workflows/Run%20Tests/badge.svg)](https://github.com/symcon/rechenmodule/actions)
+
 
 [![IP-Symcon is awesome!](https://img.shields.io/badge/IP--Symcon-4.3-blue.svg)](https://www.symcon.de)
 [![Check Style](https://github.com/symcon/Rechenmodule/workflows/Check%20Style/badge.svg)](https://github.com/symcon/Rechenmodule/actions)
