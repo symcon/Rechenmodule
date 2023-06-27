@@ -1,0 +1,12 @@
+{
+    "id": "{DA6DD578-8263-BC3B-60F1-83967ABEB8E7}",
+    "name": "WertebereichSkalieren",
+    "type": 3,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "VRC",
+    "url": "https://github.com/symcon/Rechenmodule/WertebereichSkalieren"
+}

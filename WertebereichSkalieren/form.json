@@ -1,0 +1,54 @@
+{
+    "elements": [
+        {
+            "caption": "Input Variable",
+            "name": "InputID",
+            "type": "SelectVariable",
+            "validVariableTypes": [
+                1,
+                2
+            ]
+        },
+        {
+            "type": "RowLayout",
+            "items": [
+                {
+                    "type": "NumberSpinner",
+                    "caption": "Minimal Input Value",
+                    "name": "MinInput",
+                    "moreDigits": true
+                },
+                {
+                    "type": "NumberSpinner",
+                    "caption": "Maximal Input Value",
+                    "name": "MaxInput",
+                    "moreDigits": true
+                }
+            ]
+        },{
+            "type": "RowLayout",
+            "items": [
+                {
+                    "type": "NumberSpinner",
+                    "caption": "Minimal Output Value",
+                    "name": "MinOutput",
+                    "moreDigits": true
+                },
+                {
+                    "type": "NumberSpinner",
+                    "caption": "Maximal Output Value",
+                    "name": "MaxOutput",
+                    "moreDigits": true
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Button",
+            "onClick": "echo(VRC_Scale($id) ? 'OK' : IPS_Translate($id, 'Something went wrong!'));",
+            "caption": "Scale Current Value"
+        }
+    ],
+    "status": []
+}
