@@ -1,0 +1,14 @@
+{
+    "translations": {
+        "de": {
+            "Input Variable": "Eingabevariable",
+            "Minimal Input Value": "Minimaler Eingabewert",
+            "Maximal Input Value": "Maximaler Eingabewert",
+            "Minimal Output Value": "Minimaler Ausgabewert",
+            "Maximal Output Value": "Maximaler Ausgabewert",
+            "Scale Current Value": "Skaliere aktuellen Wert",
+            "Something went wrong": "Etwas ist schief gelaufen",
+            "Output": "Ausgabewert"
+        }
+    }
+}

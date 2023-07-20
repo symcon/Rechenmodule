@@ -20,4 +20,8 @@ class RechenmoduleValidationTest extends TestCaseSymconValidation
     {
         $this->validateModule(__DIR__ . '/../UmrechnenMultiGrenzen');
     }
+    public function testValidateWertebereichSkalierenModule(): void
+    {
+        $this->validateModule(__DIR__ . '/../WertebereichSkalieren');
+    }
 }
