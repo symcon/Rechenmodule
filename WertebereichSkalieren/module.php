@@ -25,8 +25,11 @@ declare(strict_types=1);
 
         public function ApplyChanges()
         {
-            if ($this->ReadPropertyInteger('InputID') != IPS_GetProperty('InputID')) {
-                $this->UnregisterMessage(IPS_GetProperty('InputID'), VM_UPDATE);
+            //Unregister all messages in order to readd them
+            foreach ($this->GetMessageList() as $senderID => $messages) {
+                foreach ($messages as $message) {
+                    $this->UnregisterMessage($senderID, $message);
+                }
             }
 
             //Never delete this line!

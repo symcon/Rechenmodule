@@ -20,7 +20,7 @@ Skalierung eines Wertes innerhalb eines Wertebereiches.
 
 ### 2. Voraussetzungen
 
-- IP-Symcon ab Version 6.4
+- IP-Symcon ab Version 4.3
 
 ### 3. Software-Installation
 
