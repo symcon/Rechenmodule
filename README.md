@@ -1,7 +1,7 @@
 # Rechenmodule
 [![IP-Symcon is awesome!](https://img.shields.io/badge/IP--Symcon-4.3-blue.svg)](https://www.symcon.de)
-[![Check Style](https://github.com/symcon/Aktivliste/workflows/Check%20Style/badge.svg)](https://github.com/symcon/rechenmodule/actions)
-[![Run Tests](https://github.com/symcon/Aktivliste/workflows/Run%20Tests/badge.svg)](https://github.com/symcon/rechenmodule/actions)
+[![Check Style](https://github.com/symcon/rechenmodule/workflows/Check%20Style/badge.svg)](https://github.com/symcon/rechenmodule/actions)
+[![Run Tests](https://github.com/symcon/rechenmodule/workflows/Run%20Tests/badge.svg)](https://github.com/symcon/rechenmodule/actions)
 
 Folgende Module beinhaltet das Rechenmodule Repository:
 
