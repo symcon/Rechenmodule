@@ -25,7 +25,8 @@
                     "moreDigits": true
                 }
             ]
-        },{
+        },
+        {
             "type": "RowLayout",
             "items": [
                 {

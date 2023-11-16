@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 class UmrechnenMultiGrenzen extends IPSModule
 {
-    const LEGACYBORDERCOUNT = 10;
+    public const LEGACYBORDERCOUNT = 10;
 
     public function Create()
     {

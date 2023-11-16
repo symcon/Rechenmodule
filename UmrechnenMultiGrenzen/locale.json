@@ -1,13 +1,13 @@
 {
-	"translations": {
-		"de": { 
-			"Source": "Quelle",
-			"Value": "Wert",
-			"Calculate": "Berechne",
-			"From": "Ab",
-			"Formula": "Formel",
-			"Calculations": "Berechnungen",
-			"The following borders occur more than once:\n": "Die folgenden Grenzen sind mehr als einmal vorhanden:\n"
-		}
-	}
+    "translations": {
+        "de": {
+            "Source": "Quelle",
+            "Value": "Wert",
+            "Calculate": "Berechne",
+            "From": "Ab",
+            "Formula": "Formel",
+            "Calculations": "Berechnungen",
+            "The following borders occur more than once:\n": "Die folgenden Grenzen sind mehr als einmal vorhanden:\n"
+        }
+    }
 }

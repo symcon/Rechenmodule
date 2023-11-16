@@ -1,56 +1,59 @@
 {
-	"elements": [{
-			"type": "Label",
-			"caption": "The following borders exist more than once",
-			"visible": false
-		},
-		{
-			"name": "SourceVariable",
-			"type": "SelectVariable",
-			"caption": "Source"
-		},
-		{
-			"type": "List",
-			"name": "CalculationData",
-			"caption": "Calculations",
-			"add": true,
-			"delete": true,
-			"sort": {
-				"column": "Border",
-				"direction": "ascending"
-			},
-			"columns": [{
-					"caption": "From",
-					"name": "Border",
-					"width": "500px",
-					"add": 0,
-					"edit": {
-						"type": "NumberSpinner",
-						"digits": 4
-					}
-				},
-				{
-					"caption": "Formula",
-					"name": "Formula",
-					"width": "auto",
-					"add": "",
-					"edit": {
-						"type": "ValidationTextBox"
-					}
-				}
-			]
-		}
-	],
-	"actions": [{
-			"name": "Value",
-			"type": "NumberSpinner",
-			"caption": "Value",
-			"digits": 2
-		},
-		{
-			"type": "Button",
-			"label": "Calculate",
-			"onClick": "echo UMG_Calculate($id, $Value);"
-		}
-	]
+    "elements": [
+        {
+            "type": "Label",
+            "caption": "The following borders exist more than once",
+            "visible": false
+        },
+        {
+            "name": "SourceVariable",
+            "type": "SelectVariable",
+            "caption": "Source"
+        },
+        {
+            "type": "List",
+            "name": "CalculationData",
+            "caption": "Calculations",
+            "add": true,
+            "delete": true,
+            "sort": {
+                "column": "Border",
+                "direction": "ascending"
+            },
+            "columns": [
+                {
+                    "caption": "From",
+                    "name": "Border",
+                    "width": "500px",
+                    "add": 0,
+                    "edit": {
+                        "type": "NumberSpinner",
+                        "digits": 4
+                    }
+                },
+                {
+                    "caption": "Formula",
+                    "name": "Formula",
+                    "width": "auto",
+                    "add": "",
+                    "edit": {
+                        "type": "ValidationTextBox"
+                    }
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "Value",
+            "type": "NumberSpinner",
+            "caption": "Value",
+            "digits": 2
+        },
+        {
+            "type": "Button",
+            "label": "Calculate",
+            "onClick": "echo UMG_Calculate($id, $Value);"
+        }
+    ]
 }
