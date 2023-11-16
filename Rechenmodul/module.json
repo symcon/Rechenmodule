@@ -3,8 +3,7 @@
     "name": "Rechenmodul",
     "type": 3,
     "vendor": "",
-    "aliases": 
-    [
+    "aliases": [
         "Rechen-Modul"
     ],
     "parentRequirements": [],

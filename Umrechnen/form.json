@@ -1,12 +1,27 @@
 {
-	"elements":
-	[
-		{ "name": "SourceVariable", "type": "SelectVariable", "caption": "Source" },
-		{ "name": "Formula", "type": "ValidationTextBox", "caption": "Formula" }
-	],
-	"actions":
-	[
-		{ "name": "Value", "type": "NumberSpinner", "caption": "Value", "digits": 2},
-		{ "type": "Button", "label": "Calculate", "onClick": "echo UMR_Calculate($id, $Value);" }
-	]
+    "elements": [
+        {
+            "name": "SourceVariable",
+            "type": "SelectVariable",
+            "caption": "Source"
+        },
+        {
+            "name": "Formula",
+            "type": "ValidationTextBox",
+            "caption": "Formula"
+        }
+    ],
+    "actions": [
+        {
+            "name": "Value",
+            "type": "NumberSpinner",
+            "caption": "Value",
+            "digits": 2
+        },
+        {
+            "type": "Button",
+            "label": "Calculate",
+            "onClick": "echo UMR_Calculate($id, $Value);"
+        }
+    ]
 }
