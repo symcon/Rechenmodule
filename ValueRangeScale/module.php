@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-class WertebereichSkalieren extends IPSModule
+class ValueRangeScale extends IPSModule
 {
     public function Create()
     {

@@ -7,8 +7,9 @@
             "Minimal Output Value": "Minimaler Ausgabewert",
             "Maximal Output Value": "Maximaler Ausgabewert",
             "Scale Current Value": "Skaliere aktuellen Wert",
-            "Something went wrong": "Etwas ist schief gelaufen",
-            "Output": "Ausgabewert"
+            "Something went wrong!": "Etwas ist schief gelaufen!",
+            "Output": "Ausgabewert",
+            "Value Range Scale": "Wertebereich skalieren"
         }
     }
 }

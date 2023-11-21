@@ -22,6 +22,6 @@ class RechenmoduleValidationTest extends TestCaseSymconValidation
     }
     public function testValidateWertebereichSkalierenModule(): void
     {
-        $this->validateModule(__DIR__ . '/../WertebereichSkalieren');
+        $this->validateModule(__DIR__ . '/../ValueRangeScale');
     }
 }

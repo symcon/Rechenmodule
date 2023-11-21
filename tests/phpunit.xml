@@ -9,6 +9,7 @@
       <directory suffix=".php">../Rechenmodul</directory>
       <directory suffix=".php">../Umrechnen</directory>
       <directory suffix=".php">../UmrechnenMultiGrenzen</directory>
+      <directory suffix=".php">../ValueRangeScale</directory>
     </include>
   </source>
 </phpunit>
