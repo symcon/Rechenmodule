@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class UmrechnenMultiGrenzen extends IPSModule
+class ConvertMultiBoundaries extends IPSModule
 {
     public const LEGACYBORDERCOUNT = 10;
 

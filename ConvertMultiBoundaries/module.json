@@ -1,14 +1,14 @@
 {
     "id": "{D40D120A-C525-4DFC-9F44-ED6E43890C63}",
-    "name": "UmrechnenMultiGrenzen",
+    "name": "ConvertMultiBoundaries",
     "type": 3,
     "vendor": "",
     "aliases": [
-        "UmrechnenMultiGrenzen"
+        "ConvertMultiBoundaries"
     ],
     "parentRequirements": [],
     "childRequirements": [],
     "implemented": [],
     "prefix": "UMG",
-    "url": "https://github.com/symcon/Rechenmodule/tree/master/UmrechnenMultiGrenzen"
+    "url": "https://www.symcon.de/en/service/documentation/module-reference/computation-module/convertmultiboundaries/"
 }

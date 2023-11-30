@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-class Rechenmodul extends IPSModule
+class ComputationModule extends IPSModule
 {
     public function Create()
     {

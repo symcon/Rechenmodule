@@ -6,9 +6,9 @@
   </php>
   <source>
     <include>
-      <directory suffix=".php">../Rechenmodul</directory>
-      <directory suffix=".php">../Umrechnen</directory>
-      <directory suffix=".php">../UmrechnenMultiGrenzen</directory>
+      <directory suffix=".php">../Computation Module</directory>
+      <directory suffix=".php">../Converter</directory>
+      <directory suffix=".php">../ConverterMultiGrenzen</directory>
       <directory suffix=".php">../ValueRangeScale</directory>
     </include>
   </source>

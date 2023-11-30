@@ -1,7 +1,7 @@
 {
     "id": "{E96F4ECF-48CC-4697-9110-502876B38950}",
     "author": "Symcon GmbH",
-    "name": "Rechenmodule",
+    "name": "Computation Module",
     "url": "https://www.symcon.de/",
     "compatibility": {
         "version": "4.3"
