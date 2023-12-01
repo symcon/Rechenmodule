@@ -1,14 +1,14 @@
 {
     "id": "{A7B0B43B-BEB0-4452-B55E-CD8A9A56B052}",
-    "name": "Rechenmodul",
+    "name": "Computation Module",
     "type": 3,
     "vendor": "",
     "aliases": [
-        "Rechen-Modul"
+        "Computation Module"
     ],
     "parentRequirements": [],
     "childRequirements": [],
     "implemented": [],
     "prefix": "RM",
-    "url": "https://github.com/symcon/Rechenmodule/tree/master/Rechenmodul"
+    "url": "https://www.symcon.de/en/service/documentation/module-reference/computation-module/"
 }

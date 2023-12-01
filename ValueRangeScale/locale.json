@@ -9,7 +9,8 @@
             "Scale Current Value": "Skaliere aktuellen Wert",
             "Something went wrong!": "Etwas ist schief gelaufen!",
             "Output": "Ausgabewert",
-            "Value Range Scale": "Wertebereich skalieren"
+            "Value Range Scale": "Wertebereich skalieren",
+            "https://www.symcon.de/en/service/documentation/module-reference/computation-module/valuerangescale/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/rechenmodule/wertebereichskalieren/"
         }
     }
 }

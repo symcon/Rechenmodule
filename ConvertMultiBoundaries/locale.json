@@ -1,0 +1,15 @@
+{
+    "translations": {
+        "de": {
+            "Source": "Quelle",
+            "Value": "Wert",
+            "Calculate": "Berechne",
+            "From": "Ab",
+            "Formula": "Formel",
+            "Calculations": "Berechnungen",
+            "The following borders occur more than once:\n": "Die folgenden Grenzen sind mehr als einmal vorhanden:\n",
+            "UmrechnenMultiGrenzen": "ConvertMultiBoundaries",
+            "https://www.symcon.de/en/service/documentation/module-reference/computation-module/convertmultiboundaries/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/rechenmodule/umrechnenmultigrenzen/"
+        }
+    }
+}

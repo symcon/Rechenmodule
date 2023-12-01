@@ -1,14 +1,14 @@
 {
     "id": "{D40C120A-C525-4DEC-9A44-ED6E43890C61}",
-    "name": "Umrechnen",
+    "name": "Converter",
     "type": 3,
     "vendor": "",
     "aliases": [
-        "Umrechnen"
+        "Converter"
     ],
     "parentRequirements": [],
     "childRequirements": [],
     "implemented": [],
     "prefix": "UMR",
-    "url": "https://github.com/symcon/Rechenmodule/tree/master/Umrechnen"
+    "url": "https://www.symcon.de/en/service/documentation/module-reference/computation-module/converter/"
 }

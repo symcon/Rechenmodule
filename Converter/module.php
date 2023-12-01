@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Umrechnen extends IPSModule
+class Converter extends IPSModule
 {
     public function Create()
     {

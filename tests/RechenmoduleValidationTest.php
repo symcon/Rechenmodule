@@ -8,17 +8,17 @@ class RechenmoduleValidationTest extends TestCaseSymconValidation
     {
         $this->validateLibrary(__DIR__ . '/..');
     }
-    public function testValidateRechenmodulModule(): void
+    public function testValidateComputationModuleModule(): void
     {
-        $this->validateModule(__DIR__ . '/../Rechenmodul');
+        $this->validateModule(__DIR__ . '/../Computation Module');
     }
-    public function testValidateUmrechnenModule(): void
+    public function testValidateConverterModule(): void
     {
-        $this->validateModule(__DIR__ . '/../Umrechnen');
+        $this->validateModule(__DIR__ . '/../Converter');
     }
-    public function testValidateUmrechnenMultiGrenzenModule(): void
+    public function testValidateConvertMultiBoundariesModule(): void
     {
-        $this->validateModule(__DIR__ . '/../UmrechnenMultiGrenzen');
+        $this->validateModule(__DIR__ . '/../ConvertMultiBoundaries');
     }
     public function testValidateWertebereichSkalierenModule(): void
     {

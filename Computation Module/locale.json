@@ -9,7 +9,9 @@
             "Average": "Durchschnitt",
             "Count": "Anzahl",
             "Variables": "Variablen",
-            "VariableID": "VariablenID"
+            "VariableID": "VariablenID",
+            "Computation Module": "Rechenmodul",
+            "https://www.symcon.de/en/service/documentation/module-reference/computation-module/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/rechenmodule/"
         }
     }
 }
